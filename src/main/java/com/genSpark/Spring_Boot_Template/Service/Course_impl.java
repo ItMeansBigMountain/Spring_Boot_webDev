@@ -26,14 +26,48 @@ public class Course_impl implements CourseService {
 
     @Override
     public List<Course> getCourseById(int requested_Course_ID) {
-        return list.stream().filter(i -> i.getCourseid() == requested_Course_ID).collect(Collectors.toList());
+        return this.list.stream().filter(i -> i.getCourseid() == requested_Course_ID).collect(Collectors.toList());
     }
 
     @Override
     public Course addCourse(Course c) {
         // Course c = new Course( list.get(list.size()-1).getCourseid()+1 , title, instructor );
-        list.add(c);
+        this.list.add(c);
         return c;
     }
+
+    @Override
+    public Course updateCourse(Course c) {
+        Course output = null;
+        for(Course l : this.list)
+        {
+            if(l.getCourseid() == c.getCourseid())
+            {
+                l.setTitle(c.getTitle());
+                l.setInstructor(c.getInstructor());
+                output = l;
+                break;
+            }
+        }
+        return output;
+    }
+
+    @Override
+    public List<Course> deleteCourse(int id) {
+        Course output = null;
+        for(int l =0; l < this.list.size(); l++)
+        {
+            if(this.list.get(l).getCourseid() == id)
+            {
+             this.list.remove(l);
+             break;
+            }
+        }
+        return this.list;
+    }
+
+
+
+
 
 }
