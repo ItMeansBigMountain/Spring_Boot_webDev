@@ -20,7 +20,6 @@ public class Route_Controller {
         return "Hello " + name + "! Go to localhost:8080/courses to check me out!";
     }
 
-
     @GetMapping("/courses") // GET ALL
     public List<Course> displayCourses() {
         return this.courseService.getAllCourses();
@@ -32,7 +31,7 @@ public class Route_Controller {
     }
 
 
-    @PutMapping("/courses") // UPDATE
+    @PutMapping("/courses") // PUT
     public List<Course> updateCourseByID(@RequestBody Course c) {
         return this.courseService.updateCourse(c);
     }
