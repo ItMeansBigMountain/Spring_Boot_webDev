@@ -13,8 +13,7 @@ public class Route_Controller {
     @Autowired
     private CourseService courseService;
 
-
-    //default param value example
+    //HOME SCREEN
     @RequestMapping("/")
     public String home(@RequestParam(value = "name", defaultValue = "World") String name) {
         return "Hello " + name + "! Go to localhost:8080/courses to check me out!";
@@ -30,22 +29,25 @@ public class Route_Controller {
         return this.courseService.addCourse(c);
     }
 
-
     @PutMapping("/courses") // PUT
     public List<Course> updateCourseByID(@RequestBody Course c) {
         return this.courseService.updateCourse(c);
     }
-
 
     @DeleteMapping("/courses/{id}") // DELETE
     public List<Course> deleteCourseByID(@PathVariable int id) {
         return this.courseService.deleteCourse(id);
     }
 
-
     @GetMapping("/courses/{id}") // GET ID
     public Course displayCourseByID(@PathVariable String id) {
         return this.courseService.getCourseById(Integer.parseInt(id));
+    }
+
+
+    @RequestMapping("/sendmail")
+    public String sendMail(@RequestParam(value = "to", defaultValue = "laflametoast@gmail.com") String to_email, @RequestParam(value = "subject", defaultValue = "null") String subject, @RequestParam(value = "body", defaultValue = "null") String body) {
+        return "Success: " + this.courseService.send_mail(to_email, subject, body);
     }
 
 
@@ -56,3 +58,4 @@ public class Route_Controller {
     }
 
 }
+

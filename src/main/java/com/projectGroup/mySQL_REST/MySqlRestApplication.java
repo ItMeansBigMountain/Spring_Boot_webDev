@@ -7,7 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MySqlRestApplication {
 
 	public static void main(String[] args) {
-		  SpringApplication.run(MySqlRestApplication.class, args);
+		  SpringApplication.run(MySqlRestApplication.class, args); // IOC CONTAINER
 	}
 
 }
