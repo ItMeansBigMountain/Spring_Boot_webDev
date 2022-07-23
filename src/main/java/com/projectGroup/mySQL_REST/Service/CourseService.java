@@ -8,7 +8,6 @@ public interface CourseService {
     Course addCourse(Course c);
     List<Course> updateCourse(Course c);
     List<Course> deleteCourse(int id);
-    Boolean send_mail(String to_email , String subject , String body);
 }
 
 
